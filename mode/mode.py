@@ -39,7 +39,7 @@ class moderation(commands.Cog):
             if modlog != None:
                 embed = discord.Embed(
                     title = "Purge",
-                    description = f"{amount} message(s) have been purged by {ctx.author.mention} in {ctx.message.channel.mention}",
+                    description = f"{amount} mensagens foram apagadas por {ctx.author.mention} em {ctx.message.channel.mention}",
                     color = self.blurple
                 )
                 await modlog.send(embed = embed)
@@ -65,7 +65,7 @@ class moderation(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(
                 title = "Missing Permissions",
-                description = "You are missing the **Supporter** permission level!",
+                description = "Você não tem permissão para usar esse comando",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed, delete_after = 5.0)
@@ -78,7 +78,7 @@ class moderation(commands.Cog):
         if member == None:
             embed = discord.Embed(
                 title = "Kick Error",
-                description = "Please specify a member!",
+                description = "Mencione alguém!",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed, delete_after = 5.0)
@@ -95,7 +95,7 @@ class moderation(commands.Cog):
                     await member.kick(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No reason proivded.")
                     embed = discord.Embed(
                         title = "Kick",
-                        description = f"{member.mention} has been kicked by {ctx.message.author.mention}.",
+                        description = f"{member.mention} foi expulso por {ctx.message.author.mention}.",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -105,7 +105,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Kick",
-                            description = f"{member.mention} has been kicked by {ctx.message.author.mention} in {ctx.message.channel.mention}.",
+                            description = f"{member.mention} foi expulso por {ctx.message.author.mention} em {ctx.message.channel.mention}.",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
@@ -113,7 +113,7 @@ class moderation(commands.Cog):
                     await member.kick(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
                         title = "Kick",
-                        description = f"{member.mention} has been kicked by {ctx.message.author.mention} for {reason}",
+                        description = f"{member.mention} foi expulso por {ctx.message.author.mention} por {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -123,7 +123,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Kick",
-                            description = f"{member.mention} has been kicked by {ctx.message.author.mention} in {ctx.message.channel.mention} for {reason}",
+                            description = f"{member.mention} foi expulso por {ctx.message.author.mention} em {ctx.message.channel.mention} por {reason}",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
@@ -133,7 +133,7 @@ class moderation(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(
                 title = "Missing Permissions",
-                description = "You are missing the **Moderator** permission level!",
+                description = "Você não tem permissão para usar esse comando",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed, delete_after = 5.0)
@@ -145,7 +145,7 @@ class moderation(commands.Cog):
         if member == None:
             embed = discord.Embed(
                 title = "Ban Error",
-                description = "Please specify a user!",
+                description = "Mencione alguém!",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed)
@@ -153,7 +153,7 @@ class moderation(commands.Cog):
             if member.id == ctx.message.author.id:
                 embed = discord.Embed(
                     title = "Ban Error",
-                    description = "You can't ban yourself!",
+                    description = "Você não pode banir você mesmo!",
                     color = self.blurple
                 )
                 await ctx.send(embed = embed)
@@ -234,7 +234,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Ban",
-                            description = f"{user.mention} has been unbanned by {ctx.message.author.mention} in {ctx.message.channel.mention}.",
+                            description = f"{user.mention} foi desbanido por {ctx.message.author.mention} em {ctx.message.channel.mention}.",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
@@ -245,7 +245,7 @@ class moderation(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(
                 title = "Missing Permissions",
-                description = "You are missing the **Administrator** permission level!",
+                description = "Você não tem permissão para usar esse comando",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed, delete_after = 5.0)
@@ -279,7 +279,7 @@ class moderation(commands.Cog):
                     await member.add_roles(role)
                     embed = discord.Embed(
                         title = "Mute",
-                        description = f"{member.mention} has been muted by {ctx.message.author.mention}.",
+                        description = f"{member.mention} foi mutado por {ctx.message.author.mention}.",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -312,7 +312,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Mute",
-                            description = f"{member.mention} has been muted by {ctx.message.author.mention} in {ctx.message.channel.mention} for {reason}",
+                            description = f"{member.mention} foi mutado por {ctx.message.author.mention} em {ctx.message.channel.mention} por {reason}",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
@@ -344,7 +344,7 @@ class moderation(commands.Cog):
                 await member.remove_roles(role)
                 embed = discord.Embed(
                     title = "Unmute",
-                    description = f"{member.mention} has been unmuted by {ctx.message.author.mention}.",
+                    description = f"{member.mention} foi desmutado por {ctx.message.author.mention}.",
                     color = self.blurple
                 )
                 await ctx.send(embed = embed)
@@ -354,14 +354,14 @@ class moderation(commands.Cog):
                 if modlog != None:
                     embed = discord.Embed(
                         title = "Unmute",
-                        description = f"{member.mention} has been unmuted by {ctx.message.author.mention} in {ctx.message.channel.mention}.",
+                        description = f"{member.mention} foi desmutado por {ctx.message.author.mention} em {ctx.message.channel.mention}.",
                         color = self.blurple
                     )
                     await modlog.send(embed = embed)
             else:
                 embed = discord.Embed(
                     title = "Unmute Error",
-                    description = f"{member.mention} is not muted!",
+                    description = f"{member.mention} está mutado!",
                     color = self.errorcolor
                 )
                 await ctx.send(embed = embed)
@@ -371,7 +371,7 @@ class moderation(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(
                 title = "Missing Permissions!",
-                description = "You are missing the **Moderator** permission level!",
+                description = "Você não tem permissão para usar esse comando",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed)
@@ -383,7 +383,7 @@ class moderation(commands.Cog):
         if member == None:
             embed = discord.Embed(
                 title = "Softban Error",
-                description = "Please specify a user!",
+                description = "Menciona alguém!",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed, delete_after = 5.0)
@@ -391,7 +391,7 @@ class moderation(commands.Cog):
             if member.id == ctx.message.author.id:
                 embed = discord.Embed(
                     title = "Softban Error",
-                    description = "You can't softban yourself!",
+                    description = "Você não pode usar softban em você mesmo!",
                     color = self.blurple
                 )
                 await ctx.send(embed = embed)
@@ -440,7 +440,7 @@ class moderation(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(
                 title = "Missing Permissions!",
-                description = "You are missing the **Administrator** permission level!",
+                description = "Você não tem permissão para usar esse comando!",
                 color = self.errorcolor
             )
             await ctx.send(embed = embed)
