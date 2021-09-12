@@ -162,7 +162,7 @@ class moderation(commands.Cog):
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
                     embed = discord.Embed(
                         title = "Ban",
-                        description = f"{member.mention} has been banned by {ctx.message.author.mention}.",
+                        description = f"{member.mention} foi banido por {ctx.message.author.mention}.",
                         color = self.blurple
                     )
                     modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
@@ -171,7 +171,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Ban",
-                            description = f"{member.mention} has been banned by {ctx.message.author.mention}.",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention}.",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
@@ -179,7 +179,7 @@ class moderation(commands.Cog):
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
                         title = "Ban",
-                        description = f"{member.mention} has been banned by {ctx.message.author.mention} for {reason}",
+                        description = f"{member.mention} foi banido por {ctx.message.author.mention}. Motivo: {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -189,7 +189,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Ban",
-                            description = f"{member.mention} has been banned by {ctx.message.author.mention} in {ctx.message.channel.mention} for {reason}",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention} em {ctx.message.channel.mention}. Motivo: {reason}",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
