@@ -179,7 +179,8 @@ class moderation(commands.Cog):
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
                         title = "Ban",
-                        description = f"{member.mention} foi banido por {ctx.message.author.mention}. Motivo: {reason}",
+                        description = f"{member.mention} foi banido por {ctx.message.author.mention} 
+Motivo: {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -189,7 +190,8 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Ban",
-                            description = f"{member.mention} foi banido por {ctx.message.author.mention} em {ctx.message.channel.mention}. Motivo: {reason}",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention} em {ctx.message.channel.mention}
+ Motivo: {reason}",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
