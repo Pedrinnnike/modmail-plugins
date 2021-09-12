@@ -144,7 +144,7 @@ class moderation(commands.Cog):
     async def ban(self, ctx, member : discord.Member = None, *, reason = None):
         if member == None:
             embed = discord.Embed(
-                title = "Ban Error",
+                title = "Erro!",
                 description = "Mencione alguém!",
                 color = self.errorcolor
             )
@@ -152,7 +152,7 @@ class moderation(commands.Cog):
         else:
             if member.id == ctx.message.author.id:
                 embed = discord.Embed(
-                    title = "Ban Error",
+                    title = "Erro!",
                     description = "Você não pode banir você mesmo!",
                     color = self.blurple
                 )
