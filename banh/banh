@@ -1,0 +1,77 @@
+ import discord
+from discord.ext import commands
+from core import checks
+from core.models import PermissionLevel
+
+class moderation(commands.Cog):
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.errorcolor = 0xFF2B2B
+        self.blurple = 0x7289DA  
+
+    #Ban command
+    @commands.command()
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
+    async def ban(self, ctx, member : discord.Member = None, *, reason = None):
+        if member == None:
+            embed = discord.Embed(
+                title = "Erro!",
+                description = "Mencione alguém!",
+                color = self.errorcolor
+            )
+            await ctx.send(embed = embed)
+        else:
+            if member.id == ctx.message.author.id:
+                embed = discord.Embed(
+                    title = "Erro!",
+                    description = "Você não pode banir você mesmo!",
+                    color = self.blurple
+                )
+                await ctx.send(embed = embed)
+            else:
+                if reason == None:
+                    await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
+                    embed = discord.Embed(
+                        title = "Ban",
+                        description = f"{member.mention} foi banido por {ctx.message.author.mention}.",
+                        color = self.blurple
+                    )
+                    modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
+                    if modlog == None:
+                        return
+                    if modlog != None:
+                        embed = discord.Embed(
+                            title = "Ban",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention}.",
+                            color = self.blurple
+                        )
+                        await modlog.send(embed = embed)
+                else:
+                    await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
+                    embed = discord.Embed(
+                        title = "{member.mention} foi banido",
+                        description = f"**Motivo:** {reason}",
+                        color = self.blurple
+                    )
+                    await ctx.send(embed = embed)
+                    modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
+                    if modlog == None:
+                        return
+                    if modlog != None:
+                        embed = discord.Embed(
+                            title = "Ban",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention} em {ctx.message.channel.mention} com motivo: {reason}",
+                            color = self.blurple
+                        )
+                        await modlog.send(embed = embed)
+
+    @ban.error
+    async def ban_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            embed = discord.Embed(
+                title = "Missing Permissions",
+                description = "You are missing the **Administrator** permission level!",
+                color = self.errorcolor
+            )
+            await ctx.send(embed = embed, delete_after = 5.0)
