@@ -161,8 +161,8 @@ class moderation(commands.Cog):
                 if reason == None:
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
                     embed = discord.Embed(
-                        author = f"{member.mention} foi banido",
-                        footer = f"**Moderador:** {ctx.message.author.mention}.",
+                        title = f"{member.mention} foi banido",
+                        description = f"**Moderador:** {ctx.message.author.mention}.",
                         color = self.blurple
                     )
                     modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
@@ -170,16 +170,16 @@ class moderation(commands.Cog):
                         return
                     if modlog != None:
                         embed = discord.Embed(
-                            title = "Ban",
-                            description = f"{member.mention} foi banido por {ctx.message.author.mention}.",
+                            title = f"{member.mention} foi banido",
+                            description = f"Moderador: {ctx.message.author.mention}.",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
                 else:
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
-                        author = f"{member.mention} foi banido",
-                        footer = f"**Motivo:** {reason}",
+                        title = f"{member.mention} foi banido",
+                        description = f"**Motivo:** {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -188,8 +188,8 @@ class moderation(commands.Cog):
                         return
                     if modlog != None:
                         embed = discord.Embed(
-                            title = "Ban",
-                            description = f"{member.mention} foi banido por {ctx.message.author.mention} em {ctx.message.channel.mention} com motivo: {reason}",
+                            title = f"{member.mention} foi banido",
+                            description = f"Moderador: {ctx.message.author.mention} | Canal: {ctx.message.channel.mention} com motivo: {reason}",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
