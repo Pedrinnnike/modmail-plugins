@@ -401,7 +401,7 @@ class moderation(commands.Cog):
                     await member.unban()
                     embed = discord.Embed(
                         title = "Softban",
-                        description = f"{member.mention} has been softbanned by {ctx.message.author.mention}",
+                        description = f"{member.mention} foi banido por {ctx.message.author.mention}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -411,7 +411,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Softban",
-                            description = f"{member.mention} has been softbanned by {ctx.message.author.mention}.",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention}.",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
@@ -420,7 +420,7 @@ class moderation(commands.Cog):
                     await member.unban()
                     embed = discord.Embed(
                         title = "Softban",
-                        description = f"{member.mention} has been softbanned by {ctx.message.author.mention} for {reason}",
+                        description = f"{member.mention} foi banido por {ctx.message.author.mention} com motivo: {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
@@ -430,7 +430,7 @@ class moderation(commands.Cog):
                     if modlog != None:
                         embed = discord.Embed(
                             title = "Softban",
-                            description = f"{member.mention} has been softbanned by {ctx.message.author.mention} for {reason}.",
+                            description = f"{member.mention} foi banido por {ctx.message.author.mention} com motivo: {reason}.",
                             color = self.blurple
                         )
                         await modlog.send(embed = embed)
