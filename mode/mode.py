@@ -161,8 +161,8 @@ class moderation(commands.Cog):
                 if reason == None:
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
                     embed = discord.Embed(
-                        title = f"{member.mention} foi banido",
-                        description = f"**Moderador:** {ctx.message.author.mention}.",
+                        author = f"{member.mention} foi banido",
+                        footer = f"**Moderador:** {ctx.message.author.mention}.",
                         color = self.blurple
                     )
                     modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
@@ -178,8 +178,8 @@ class moderation(commands.Cog):
                 else:
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
-                        title = f"{member.mention} foi banido",
-                        description = f"**Motivo:** {reason}",
+                        author = f"{member.mention} foi banido",
+                        footer = f"**Motivo:** {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
