@@ -159,14 +159,6 @@ class moderation(commands.Cog):
                 )
                 await ctx.send(embed = embed)
             else:
-             if member.id == 785904843855364150:
-                embed = discord.Embed(
-                    title = "Erro!",
-                    description = "Você não pode banir o Pedrin 👍",
-                    color = self.blurple
-                )
-                await ctx.send(embed = embed)
-            else:
 
                 if reason == None:
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
