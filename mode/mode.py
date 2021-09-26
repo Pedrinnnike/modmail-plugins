@@ -150,7 +150,8 @@ class moderation(commands.Cog):
             )
             await ctx.send(embed = embed)
         else:
-            if member.id == ctx.message.author.id:
+
+           if member.id == ctx.message.author.id:
                 embed = discord.Embed(
                     title = "Erro!",
                     description = "Você não pode banir você mesmo!",
